@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+      <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/style.html')?>
+
+</head>
+<body>
+    
+    <!-- 侧边栏 -->
+        <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/aside.html')?>
+    <!-- 主体 -->
+    <div class="main">
+        <div class="container-fluid">
+            <!-- 头部 -->
+     	<?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/header.html')?>
+
+            <div class="body teacher">
+                <!-- 面包屑 -->
+                <ol class="breadcrumb">
+                    <li><a href="javascript:;">讲师管理</a></li>
+                    <li class="active">讲师添加</li>
+                </ol>
+                <div class="teacher-add">
+                    <form action="" class="form-horizontal col-xs-offset-2" id="tc-form">
+                        <div class="form-group">
+                            <label for="" class="col-xs-3 control-label">姓名</label>
+                            <div class="col-xs-4">
+                                <input type="text" class="form-control input-sm" placeholder="讲师名称" name="tc_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-xs-3 control-label">密码</label>
+                            <div class="col-xs-4">
+                                <input  type="password" class="form-control input-sm" name="tc_pass">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-xs-3 control-label">入职时间</label>
+                            <div class="col-xs-4">
+                                <input  type="text" class="form-control input-sm" name="tc_join_date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-xs-3 control-label">类型</label>
+                            <div class="col-xs-2">
+                                <select class="form-control input-sm" name="tc_type">
+                                    <option value="0">讲师</option>
+                                    <option value="1">管理员</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-xs-3 control-label">性别</label>
+                            <div class="col-xs-4">
+                                <label class="radio-inline">
+                                    <input name="tc_gender" type="radio" checked value="1"> 男
+                                </label>
+                                <label class="radio-inline">
+                                    <input name="tc_gender" type="radio" value="0"> 女
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-7">
+                                <button type="submit" class="btn btn-success btn-sm pull-right"> 添 加 </button>
+                            </div>                
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    	<script src="/lib/requirejs/require-2.3.3.js" data-main="/js/common/main"></script>
+
+</body>
+</html>

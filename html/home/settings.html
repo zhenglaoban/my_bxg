@@ -5,6 +5,7 @@
     <title>学IT - 后台管理系统</title>
     <!-- 样式 -->
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/style.html')?>
+    <link rel="stylesheet" href="/lib/jquery-bootstrap-datepicker/css/bootstrap-datepicker3.css">
 </head>
 <body>
     
@@ -18,18 +19,27 @@
             <!-- 讲师资料 -->
             <div class="body teacher-profile">
                 <div class="settings">
-                    <form action="" class="form-horizontal">
+                   <!-- 个人中心模板的坑 -->
+                </div>
+            </div>
+        </div>
+    </div>
+         <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/loading.html')?>
+         <!-- 个人中心的模板 -->
+         <script type="text/html" id="tc-setting">
+              <form action="" class="form-horizontal">
+                  <input type="hidden" name="tc_id" value="{{tc_id}}">
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">姓名</label>
                             <div class="col-xs-5">
-                                <p class="form-control-static">赵玉川</p>
+                                <p class="form-control-static">{{tc_name}}</p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">头像</label>
                             <div class="col-xs-2 preview">
-                                <img src="./images/default.png">
-                                <input type="file" id="upfile">
+                                <img id="avatar" src="{{tc_avatar ? tc_avatar : '/img/default.png'}}">
+                                <input  type="file" id="upfile">
                                 <div class="cover">
                                     <i class="fa fa-upload"></i>                  
                                 </div>
@@ -38,81 +48,72 @@
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">昵称</label>
                             <div class="col-xs-5">
-                                <input type="text" class="form-control input-sm">
+                                <input type="text" name="tc_roster" value="{{tc_roster}}" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">性别</label>
                             <div class="col-xs-3">
                                 <label class="radio-inline">
-                                    <input type="radio" checked> 男
+                                    <input name="tc_gender" value="0" type="radio" {{tc_gender == '0' ? 'checked' : ''}}> 男
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio"> 女
+                                    <input name="tc_gender" value="1" type="radio" {{tc_gender == '1' ? 'checked' : ''}}> 女
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">出生日期</label>
                             <div class="col-xs-5">
-                                <input type="text" class="form-control input-sm">
+                                <input type="text" name="tc_birthday" value="{{tc_birthday}}" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">籍贯</label>
-                            <div class="col-xs-5">
-                                <select name="" class="form-control input-sm">
-                                    <option value="">河北省</option>
-                                    <option value="">山东省</option>
-                                    <option value="">北京市</option>
+                            <div class="col-xs-5" id="tc-region">
+                                <select name="tc_province" id="p" data-id="{{tc_province}}" class="form-control input-sm">
+                                    <option value="">请选择省</option>
                                 </select>
-                                <select name="" class="form-control input-sm">
-                                    <option value="">河北省</option>
-                                    <option value="">山东省</option>
-                                    <option value="">北京市</option>
+                                <select name="tc_city" id="c" data-id="{{tc_city}}" class="form-control input-sm">
+                                    <option value="">请选择省</option>
                                 </select>
-                                <select name="" class="form-control input-sm">
-                                    <option value="">河北省</option>
-                                    <option value="">山东省</option>
-                                    <option value="">北京市</option>
+                                <select name="tc_district" id="d" data-id="{{tc_district}}" class="form-control input-sm">
+                                    <option value="">请选择省</option>         
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">手机号码</label>
                             <div class="col-xs-5">
-                                <input type="text" class="form-control input-sm">
+                                <input type="text" name="tc_cellphone" value="{{tc_cellphone}}" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">电子邮箱</label>
                             <div class="col-xs-5">
-                                <input type="text" class="form-control input-sm">
+                                <input type="text" name="tc_email" value="{{tc_email}}" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">入职日期</label>
                             <div class="col-xs-5">
-                                <input type="text" class="form-control input-sm">
+                                <input type="text" name="tc_join_date" value="{{tc_join_date}}" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">个人介绍</label>
                             <div class="col-xs-5 ckeditor">
-                                <textarea name="" rows="15" class="form-control input-sm"></textarea>
+                                <textarea name="tc_introduce" value="" rows="15" class="form-control input-sm">{{tc_introduce}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-8">
-                                <a href="./course_add_step2.html" class="btn btn-success btn-sm pull-right">保 存</a>
+                                <button type="submit"  class="btn btn-success btn-sm pull-right baocun">保 存</button>
                                 <a href="./repass.html" class="btn btn-link btn-sm pull-right">更改密码？</a>
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
+         </script>
 	<script src="/lib/requirejs/require-2.3.3.js" data-main="/js/common/main"></script>
 </body>
 </html>

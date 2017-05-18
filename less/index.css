@@ -728,3 +728,7 @@ a:focus {
   min-height: 240px;
   padding: 15px 10px;
 }
+.btn-cs-img{
+  line-height: 20px;
+  padding: 0;
+}

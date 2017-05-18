@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
     <!-- 样式 -->
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/style.html')?>
 </head>
+
 <body>
     <!-- 侧边栏 -->
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/aside.html')?>
@@ -13,7 +15,7 @@
     <div class="main">
         <div class="container-fluid">
             <!-- 头部 -->
-        	<?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/header.html')?>
+            <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/header.html')?>
             <!-- 客户列表 -->
             <div class="body course-list">
                 <!-- 面包屑 -->
@@ -21,143 +23,42 @@
                     <li><a href="javascript:;">课程管理</a></li>
                     <li class="active">课程列表</li>
                 </ol>
+                <!-- 课程列表的坑 -->
                 <div class="courses">
-                    <div class="course">
-                        <div class="pic">
-                            <img src="/img/course.png" alt="">
-                        </div>
-                        <div class="info">
-                            <a href="javascript:;">html,div+css视频教程(2014最新,带多个企业级项目实战)</a>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <span>讲师：李鹏周</span>
-                                    <span>类别：前端开发</span>
-                                </li>
-                                <li>
-                                    <span>课时：32</span>
-                                    <span>学员：9823</span>
-                                </li>
-                                <li>
-                                    <span>浏览：11313</span>
-                                    <span></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="pic">
-                            <img src="/img/course.png" alt="">
-                        </div>
-                        <div class="info">
-                            <a href="javascript:;">JavaScript 基础</a>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <span>讲师：李鹏周</span>
-                                    <span>类别：前端开发</span>
-                                </li>
-                                <li>
-                                    <span>课时：32</span>
-                                    <span>学员：9823</span>
-                                </li>
-                                <li>
-                                    <span>浏览：11313</span>
-                                    <span></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="pic">
-                            <img src="/img/course.png" alt="">
-                        </div>
-                        <div class="info">
-                            <a href="javascript:;">App开发从0到1</a>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <span>讲师：李鹏周</span>
-                                    <span>类别：前端开发</span>
-                                </li>
-                                <li>
-                                    <span>课时：32</span>
-                                    <span>学员：9823</span>
-                                </li>
-                                <li>
-                                    <span>浏览：11313</span>
-                                    <span></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="pic">
-                            <img src="/img/course.png" alt="">
-                        </div>
-                        <div class="info">
-                            <a href="javascript:;">Java 从入门到精通</a>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <span>讲师：李鹏周</span>
-                                    <span>类别：前端开发</span>
-                                </li>
-                                <li>
-                                    <span>课时：32</span>
-                                    <span>学员：9823</span>
-                                </li>
-                                <li>
-                                    <span>浏览：11313</span>
-                                    <span></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="pic">
-                            <img src="/img/course.png" alt="">
-                        </div>
-                        <div class="info">
-                            <a href="javascript:;">html,div+css视频教程(2014最新,带多个企业级项目实战)</a>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <span>讲师：李鹏周</span>
-                                    <span>类别：前端开发</span>
-                                </li>
-                                <li>
-                                    <span>课时：32</span>
-                                    <span>学员：9823</span>
-                                </li>
-                                <li>
-                                    <span>浏览：11313</span>
-                                    <span></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="pic">
-                            <img src="/img/course.png" alt="">
-                        </div>
-                        <div class="info">
-                            <a href="javascript:;">App开发从0到1</a>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <span>讲师：李鹏周</span>
-                                    <span>类别：前端开发</span>
-                                </li>
-                                <li>
-                                    <span>课时：32</span>
-                                    <span>学员：9823</span>
-                                </li>
-                                <li>
-                                    <span>浏览：11313</span>
-                                    <span></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-	<script src="/lib/requirejs/require-2.3.3.js" data-main="/js/common/main"></script>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/loading.html')?>
+    <!-- 课程列表的模板 -->
+    <script type="text/html" id="cs-temp">
+     {{each result as value index}}
+        <div class="course">
+            <div class="pic">
+                <img src="{{value.cs_cover? value.cs_cover: '/img/course.png'}}" alt="">
+            </div>
+            <div class="info">
+                <a href="/html/course/course_add_step1.html?cs_id={{value.cs_id}}">{{value.cs_name}}</a>
+                <ul class="list-unstyled">
+                    <li>
+                        <span>讲师：{{value.tc_name}}</span>
+                        <span>类别：{{value.cg_name}}</span>
+                    </li>
+                    <li>
+                        <span>课时：32</span>
+                        <span>学员：9823</span>
+                    </li>
+                    <li>
+                        <span>浏览：11313</span>
+                        <span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+    <script src="/lib/requirejs/require-2.3.3.js" data-main="/js/common/main"></script>
 </body>
+
 </html>

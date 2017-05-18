@@ -5,6 +5,7 @@
     <title>学IT - 后台管理系统</title>
     <!-- 样式 -->
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/style.html')?>
+        <link rel="stylesheet" href="/lib/jquery-bootstrap-datepicker/css/bootstrap-datepicker3.css">
 </head>
 <body>
     
@@ -20,34 +21,34 @@
                 <ol class="breadcrumb">
                     <li><a href="javascript:;">讲师管理</a>
                     </li>
-                    <li class="active">讲师添加</li>
+                    <li class="active">讲师修改</li>
                 </ol>
                 <div class="teacher-add">
-                    <form action="" class="form-horizontal col-xs-offset-2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="tc_edit_temp">
+         <form action="" class="form-horizontal col-xs-offset-2" id="tc-edit-form">
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">姓名</label>
                             <div class="col-xs-4">
-                                <input type="text" class="form-control input-sm" placeholder="讲师名称">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-xs-3 control-label">密码</label>
-                            <div class="col-xs-4">
-                                <input type="password" class="form-control input-sm">
+                                <input type="text" value="{{tc_name}}" class="form-control input-sm" placeholder="讲师名称" name="tc_name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">入职时间</label>
                             <div class="col-xs-4">
-                                <input type="text" class="form-control input-sm">
+                                <input value="{{tc_join_date}}" id="join_date" type="text" class="form-control input-sm" name="tc_join_date">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">类型</label>
                             <div class="col-xs-2">
-                                <select name="" class="form-control input-sm">
-                                    <option value="">讲师</option>
-                                    <option value="">管理员</option>
+                                <select class="form-control input-sm" name="tc_type">
+                                    <option value="1"  {{ tc_type === '1' ? 'selected': '' }}>讲师</option>
+                                    <option value="0"  {{ tc_type === '1' ? '': 'selected' }}>管理员</option>  
                                 </select>
                             </div>
                         </div>
@@ -55,24 +56,21 @@
                             <label for="" class="col-xs-3 control-label">性别</label>
                             <div class="col-xs-4">
                                 <label class="radio-inline">
-                                    <input type="radio" checked> 男
+                                    <input name="tc_gender" type="radio" value="0" {{ tc_gender === '0' ? 'checked': '' }}> 男
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio"> 女
+                                    <input name="tc_gender" type="radio" value="1" {{ tc_gender === '0' ? '': 'checked ' }}> 女
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-7">
-                                <a href="./advert_list.html" class="btn btn-success btn-sm pull-right"> 添 加 </a>
-                            </div>                          
+                                <button type="submit" class="btn btn-success btn-sm pull-right"> 修 改 </button>
+                            </div>                
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+    </script>
+         <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/loading.html')?>
 	<script src="/lib/requirejs/require-2.3.3.js" data-main="/js/common/main"></script>
 </body>
 </html>

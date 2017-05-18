@@ -38,7 +38,12 @@ require.config({
 		jqueryForm:'lib/jquery-form/jquery.form',
 		jquery_cookie:'lib/jquery-cookie/jquery.cookie',
 		template:'lib/artTemplate/template',
-		nprogress:'lib/nprogress/nprogress'
+		nprogress:'lib/nprogress/nprogress',
+		jquery_region:'lib/jquery-region/jquery.region',
+		bootstrap_datepicker:'lib/jquery-bootstrap-datepicker/js/bootstrap-datepicker.min',
+		bootstrap_datepicker_CN:'lib/jquery-bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+		jquery_uploadify:'lib/uploadify/jquery.uploadify.min',
+		
 
 	},
 	
@@ -48,6 +53,12 @@ require.config({
 		// bootstrap是普通模块，但是依赖与jquery，所以这里配置
 		bootstrap: {
 			deps: ['jquery']
+		},
+		bootstrap_datepicker_CN: {
+			deps:['jquery','bootstrap_datepicker']
+		},
+		jquery_uploadify:{
+			deps:['jquery']
 		}
 	}
 });

@@ -10,16 +10,15 @@ define(['bootstrap', 'jquery', 'aside', 'header', 'util', 'jqueryForm' , 'nprogr
 
         // loading
         util.loading();
-        //
+        //根据表单的submit提交ajax请求。
         $('#tc-form').ajaxForm({
-            url: '/v6/teacher',
+            url: '/v6/teacher/add',
             type: 'post',
 
             success: function (data) {
                 console.log(data)
-
+              //数据提交跳到列表页面  
                 location.href = '/html/teacher/list.html'
-
             },
             error: function () {
                 alert('登录失败！！')

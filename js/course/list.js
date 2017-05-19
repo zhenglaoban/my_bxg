@@ -10,7 +10,7 @@ define(['bootstrap', 'jquery', 'aside', 'header', 'util', 'nprogress', 'template
 		// loading
 		util.loading();
 
-		$('.slide-down').next().show();
+		
 
 		$.get('/v6/course',function  (data) {
 			  $('.courses').html(template('cs-temp',data))

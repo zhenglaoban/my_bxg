@@ -10,8 +10,8 @@ function(ud, $, ud, ud, util, nprogress) {
 	// loading
 	util.loading();
 
-	    //点击事件 下面兄弟显示
-    $('.slide-down').next().show();
+	  
+
 
 	$('form').ajaxForm(function (data) {
 		location.href='/html/course/course_add_step1.html?cs_id='+ data.result.cs_id;		  

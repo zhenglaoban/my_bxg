@@ -40,5 +40,5 @@ define(['jquery', 'jquery_cookie'], function ($, ud) {
      * 如果没有匹配到，就直接使用该pathname获取对应a添加active_Class设置焦点。
      * */
     $('.navs a').removeClass('active').filter('[href="' + href + '"]').addClass('active')
-
+                    .parentsUntil('.navs').show();
 });

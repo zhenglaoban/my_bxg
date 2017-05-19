@@ -6,7 +6,9 @@
     <title>学IT - 后台管理系统</title>
     <!-- 样式 -->
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/style.html')?>
+    <link rel="stylesheet" type="text/css" href="/lib/jquery-Jcrop/css/Jcrop.min.css" />
 </head>
+
 <body>
 
     <!-- 侧边栏 -->
@@ -23,16 +25,16 @@
                     <li class="active">课程添加</li>
                 </ol>
                 <div class="steps">
-                      <!-- 第二步课程图片的坑 -->
-                    
+                    <!-- 第二步课程图片的坑 -->
+
                 </div>
             </div>
         </div>
     </div>
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/loading.html')?>
-       <!-- 第二步课程图片的模板 -->
+    <!-- 第二步课程图片的模板 -->
     <script id="step2-temp" type="text/tpl">
-         <div class="brief">
+        <div class="brief">
             <div class="thumb">
                 <img src="{{cs_cover ? cs_cover: '/img/course.png'}}" alt="">
             </div>
@@ -69,7 +71,7 @@
             <!-- 上传图片 -->
             <div class="picture col-xs-offset-2">
                 <div class="preview">
-                    <img src="{{cs_cover_original ? cs_cover_original : '/img/course.png'}}" alt="">
+                    <img id="jianqie" src="{{cs_cover_original ? cs_cover_original : '/img/course.png'}}" alt="">
                 </div>
                 <p class="tips">
                     可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。
@@ -78,7 +80,10 @@
                     <button id="btn-cs-img">选择图片</button>
                 </div>
                 <div class="col-xs-2">
-                    <a href="javascript:;" class="btn btn-warning btn-sm" disabled>裁切图片</a>
+                    <a id="cut" href="javascript:;" class="btn btn-warning btn-sm">裁切图片</a>
+                </div>
+                <div class="col-xs-2" style="display:none">
+                    <a id="baocun" href="javascript:;" class="btn btn-danger btn-sm">保存</a>
                 </div>
             </div>
         </div>

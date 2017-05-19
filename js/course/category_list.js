@@ -1,5 +1,5 @@
-define(['bootstrap', 'jquery', 'aside', 'header', 'util', 'nprogress'],
-	function (ud, $, ud, ud, util, nprogress) {
+define(['bootstrap', 'jquery', 'aside', 'header', 'util', 'nprogress','template'],
+	function (ud, $, ud, ud, util, nprogress,template) {
 		// 配置网站进度条
 		nprogress.start();
 		$(function () {
@@ -11,4 +11,9 @@ define(['bootstrap', 'jquery', 'aside', 'header', 'util', 'nprogress'],
 		util.loading();
 
 		$('.slide-down').next().show();
+
+		$.get('/v6/category',function  (data) {
+			console.log(data)
+			$('tbody').html(template('cg-list-temp', data));  
+		})
 	});

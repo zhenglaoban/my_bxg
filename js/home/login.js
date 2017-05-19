@@ -17,7 +17,9 @@ define(['jquery', 'bootstrap', 'jqueryForm','jquery_cookie','nprogress','util'],
             //使用cookie插件，添加一个cookie，key是userInfo, value是返回登录成功返回的对象。
             //因为value必须是字符串，如果是其它类型。会调用tostring方法。对象会变成'[object object]'
              $.cookie('userInfo',JSON.stringify(data.result),{
+                 //所有子页面共享这个cookie
                  path:'/',
+                 //cookie保存至这个时间为止
                  expires: new Date("2017-6-14")
                 })
              //页面跳转到主页面

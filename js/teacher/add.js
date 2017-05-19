@@ -1,5 +1,5 @@
-define(['bootstrap', 'jquery', 'aside', 'header', 'util', 'jqueryForm' , 'nprogress'],
-    function (ud, $, ud, ud, util, ud, nprogress) {
+define(['bootstrap', 'jquery', 'aside', 'header', 'util', 'jqueryForm' , 'nprogress','bootstrap_datepicker_CN'],
+    function (ud, $, ud, ud, util, ud, nprogress,ud) {
         // 配置网站进度条
         nprogress.start();
         $(function () {
@@ -23,5 +23,12 @@ define(['bootstrap', 'jquery', 'aside', 'header', 'util', 'jqueryForm' , 'nprogr
             error: function () {
                 alert('登录失败！！')
             }
+        })
+        //时间插件
+        $('[name="tc_join_date"]').datepicker({
+            	language: 'zh-CN',
+				format: 'yyyy-mm-dd',
+				startDate: '1950-01-01',
+				endDate: new Date()
         })
     });
